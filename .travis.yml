@@ -4,6 +4,10 @@ dist: xenial
 services:
   - docker
 
+cache:
+  directories:
+    - data
+
 before_install:
   - docker pull elasticsearch:7.2.0
   - docker run -d --name cdli-es -p 9200:9200 -e "discovery.type=single-node" elasticsearch:7.2.0
@@ -15,5 +19,6 @@ install:
   - pipenv install
 
 script:
+  - pushdir data; git pull; popdir
   - pipenv run python upload.py
   - curl --head localhost:9200/cdli-catalogue
