@@ -12,3 +12,4 @@ before_install:
 
 script:
   - pipenv run python upload.py
+  - curl --head localhost:9200/cdli-catalogue
