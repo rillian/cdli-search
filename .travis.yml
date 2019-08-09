@@ -7,7 +7,9 @@ services:
 before_install:
   - docker pull elasticsearch:7.2.0
   - docker run -d --name cdli-es -p 9200:9200 -e "discovery.type=single-node" elasticsearch:7.2.0
-  - git clone --depth=10 https://github.com/cdli-gh/data
+  - if ! [ -d data ]; then
+      git clone --depth=10 https://github.com/cdli-gh/data;
+    fi
   - pipenv install
 
 script:
