@@ -19,6 +19,6 @@ install:
   - pipenv install
 
 script:
-  - pushdir data; git pull; popdir
+  - pushd data; git pull; popd
   - pipenv run python upload.py
   - curl --head localhost:9200/cdli-catalogue
