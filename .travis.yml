@@ -10,6 +10,8 @@ before_install:
   - if ! [ -d data ]; then
       git clone --depth=10 https://github.com/cdli-gh/data;
     fi
+
+install:
   - pipenv install
 
 script:
